@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.database import get_db
-from app.routers import auth
+from app.routers import auth, curso, disciplina
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -22,6 +22,8 @@ app = FastAPI(
 
 # Registro dos routers (um por área do sistema).
 app.include_router(auth.router)
+app.include_router(curso.router)
+app.include_router(disciplina.router)
 
 
 @app.get("/", tags=["Status"])
